@@ -1,0 +1,57 @@
+// Dota2 Editor
+// Get latest version: https://github.com/zombieJ/nw-dota2editor
+
+"DOTAAbilities"
+{
+	"Version"		"1"
+
+	"item_winter_gift1"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_present"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"	"1500"
+		"ItemQuality"	"artifact"
+		"ItemCastOnPickup"	"0"
+		"Model"	"models/props_winter/present.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
+		"ItemCost"	"1"
+		"ItemDroppable"	"1"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"ItemKillable"	"1"
+		"ItemPermanent"	"1"
+		"ItemRequirements"	{}
+	}
+
+	"item_winter_gift2"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_winter_stocking"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"	"1501"
+		"ItemQuality"	"artifact"
+		"ItemCastOnPickup"	"0"
+		"Model"	"models/props_gameplay/pumpkin_bucket.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
+		"ItemDroppable"	"1"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"ItemPermanent"	"1"
+		"ItemRequirements"	{}
+	}
+
+	"item_winter_gift3"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_neutral"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"	"1502"
+		"ItemQuality"	"artifact"
+		"ItemCastOnPickup"	"0"
+		"Model"	"models/props_gameplay/frog.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
+		"ItemDroppable"	"1"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"ItemPermanent"	"1"
+		"ItemRequirements"	{}
+	}
+}

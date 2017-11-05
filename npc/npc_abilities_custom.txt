@@ -1,0 +1,277 @@
+// Dota2 Editor
+// Get latest version: https://github.com/zombieJ/nw-dota2editor
+
+"DOTAAbilities"
+{
+	"Version"		"1"
+
+	"The_city_was_captured"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"arc_warden_spark_wraith"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"precache"
+		{
+		}
+		// 被攻陷
+		"OnAttacked"
+		{
+			"RunScript"
+			{
+				"Target"	"CASTER"
+				"ScriptFile"	"scripts/vscripts/abilities.lua"
+				"Function"	"the_city_was_captured"
+			}
+		}
+		// 播放音乐
+		"OnAttacked"
+		{
+			"FireSound"
+			{
+				"EffectName"	"TheCityWasCaptured"
+			}
+		}
+	}
+
+	// 贪墨技能，不可攻击
+	"follow_human"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"enchantress_untouchable"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BASIC"
+		"CastFilterRejectCaster"	"0"
+		"AbilityCastPoint"	"0"
+		"AbilityCastRange"	"600"
+		"precache"
+		{
+			"particle"	"particles/econ/items/omniknight/hammer_ti6_immortal/omniknight_pu_ti6_heal_hammers.vpcf"
+		}
+		"OnOwnerSpawned"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"TARGET"
+				"ModifierName"	"modifier_follow_human"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_follow_human"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+				"Passive"	"1"
+				"IsBuff"	"1"
+				"IsDebuff"	"1"
+				"EffectName"	"particles/econ/items/omniknight/hammer_ti6_immortal/omniknight_pu_ti6_heal_hammers.vpcf"
+				"Properties"	{}
+				"IsHidden"	"0"
+				"States"
+				{
+					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_DISABLED"
+				}
+				"EffectAttachType"	"follow_origin"
+			}
+		}
+	}
+
+	// 百分之五十闪避
+	"evd:50"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"phantom_assassin_blur"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BASIC"
+		"AbilityCastPoint"	"0"
+		"precache"
+		{
+			"particle"	"particles/econ/courier/courier_gold_horn/courier_gold_horn_ambient_feather.vpcf"
+		}
+		"OnOwnerSpawned"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"TARGET"
+				"ModifierName"	"modifier_evd:50"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_evd:50"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Passive"	"1"
+				"IsBuff"	"1"
+				"States"	{}
+				"EffectName"	"particles/econ/courier/courier_gold_horn/courier_gold_horn_ambient_feather.vpcf"
+				"EffectAttachType"	"follow_overhead"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_AVOID_CONSTANT"	"50"
+				}
+				"IsHidden"	"0"
+			}
+		}
+	}
+
+	// 百分之九十闪避
+	"evd:90"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"phantom_assassin_arcana_blur"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BASIC"
+		"AbilityCastPoint"	"0"
+		"precache"
+		{
+			"particle"	"particles/econ/courier/courier_gold_horn/courier_gold_horn_ambient_feather.vpcf"
+		}
+		"OnOwnerSpawned"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"TARGET"
+				"ModifierName"	"modifier_evd:90"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_evd:90"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Passive"	"1"
+				"IsBuff"	"1"
+				"States"	{}
+				"EffectName"	"particles/econ/courier/courier_gold_horn/courier_gold_horn_ambient_feather.vpcf"
+				"EffectAttachType"	"follow_overhead"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_AVOID_CONSTANT"	"90"
+				}
+				"IsHidden"	"0"
+			}
+		}
+	}
+
+	// 百分之八十闪避
+	"evd:80"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"brewmaster_drunken_brawler"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BASIC"
+		"AbilityCastPoint"	"0"
+		"precache"
+		{
+			"particle"	"particles/econ/courier/courier_gold_horn/courier_gold_horn_ambient_feather.vpcf"
+		}
+		"OnOwnerSpawned"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"TARGET"
+				"ModifierName"	"modifier_evd:80"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_evd:80"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Passive"	"1"
+				"IsBuff"	"1"
+				"States"	{}
+				"EffectName"	"particles/econ/courier/courier_gold_horn/courier_gold_horn_ambient_feather.vpcf"
+				"EffectAttachType"	"follow_overhead"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_AVOID_CONSTANT"	"80"
+				}
+				"IsHidden"	"0"
+			}
+		}
+	}
+
+	"crt:50"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"juggernaut_blade_dance"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BASIC"
+		"precache"
+		{
+			"particle"	"particles/econ/courier/courier_jadehoof_ambient/jadehoof_special_blossoms.vpcf"
+		}
+		"OnAttack"
+		{
+			"Random"
+			{
+				"OnSuccess"
+				{
+					"ApplyModifier"
+					{
+						"Target"	"ATTACKER"
+						"ModifierName"	"modifier_crt:50_nice"
+					}
+				}
+				"OnFailure"
+				{
+				}
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_crt:50_nice"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Passive"	"1"
+				"IsBuff"	"1"
+				"IsHidden"	"1"
+				"EffectAttachType"	"attach_attack"
+				"EffectName"	"particles/econ/courier/courier_jadehoof_ambient/jadehoof_special_blossoms.vpcf"
+				"States"	{}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MISS_PERCENTAGE"	"10"
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"	"200"
+				}
+			}
+		}
+	}
+
+	"cavalry_go"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"chaos_knight_phantasm"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BASIC"
+		"OnUnitMoved"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_cavalry_go"
+				"Duration"	"0.5"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_cavalry_go"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_NONE | MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Passive"	"1"
+				"IsBuff"	"1"
+				"Duration"	"0.5"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"	"200"
+				}
+				"States"	{}
+			}
+		}
+	}
+}
