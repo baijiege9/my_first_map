@@ -17,11 +17,54 @@ function Precache( context )
     PrecacheUnitByNameSync( "npc_dota_creature_basic_zombie", context )
     PrecacheModel( "npc_dota_creature_basic_zombie", context )
 
-    PrecacheResource( "particle", "particles/units/heroes/hero_drow/drow_base_attack.vpcf", context )--小黑投射物
+    PrecacheResource( "particle", "particles/units/heroes/hero_windrunner/wr_taunt_kiss_heart.vpcf", context )--贪魔爱心特效my master
+    
 	PrecacheResource( "particle", "particles/econ/courier/courier_gold_horn/courier_gold_horn_ambient_feather.vpcf", context )
 	PrecacheResource( "particle", "particles/econ/courier/courier_jadehoof_ambient/jadehoof_special_blossoms.vpcf", context )
     PrecacheResource( "particle", "particles/econ/items/omniknight/hammer_ti6_immortal/omniknight_pu_ti6_heal_hammers.vpcf", context )
     PrecacheResource( "model", "models/items/courier/pw_zombie/pw_zombie.vmdl", context )
+
+    PrecacheResource( "model", "models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged_mega.vmdl", context )--金魔法师
+    
+    
+    PrecacheResource( "model", "models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged.vmdl", context )--木魔法师
+
+    PrecacheResource( "model", "models/creeps/lane_creeps/creep_bad_ranged/lane_dire_ranged.vmdl", context )--火
+
+    PrecacheResource( "model", "models/creeps/lane_creeps/creep_bad_ranged/lane_dire_ranged_mega.vmdl", context )--土
+
+    PrecacheResource( "model", "models/creeps/lane_creeps/creep_bad_ranged/lane_dire_ranged_mega.vmdl", context )--水
+    PrecacheResource( "particle", "particles/status_fx/status_effect_medusa_stone_gaze.vpcf", context )
+    PrecacheResource( "particle", "particles/econ/events/ti7/teleport_start_ti7_spin_water.vpcf", context )
+
+    PrecacheResource( "model", "models/heroes/drow/drow.vmdl", context )--black_bowman
+    PrecacheResource( "particle", "particles/units/heroes/hero_drow/drow_base_attack.vpcf", context )--小黑投射物
+    PrecacheResource( "model", "models/items/drow/trophy_of_the_shadowcat/trophy_of_the_shadowcat.vmdl", context )
+    PrecacheResource( "model", "models/items/drow/dotapit_s3_frostfang_bow/dotapit_s3_frostfang_bow.vmdl", context )
+    PrecacheResource( "model", "models/items/drow/quiver_of_the_boreal_watch/quiver_of_the_boreal_watch.vmdl", context )
+    PrecacheResource( "model", "models/items/drow/boots_of_the_envious_archer/boots_of_the_envious_archer.vmdl", context )
+    PrecacheResource( "model", "models/items/drow/black_wind_shoulders/black_wind_shoulders.vmdl", context )
+    PrecacheResource( "model", "models/heroes/drow/drow_bracers.vmdl", context )
+
+    PrecacheResource( "model", "models/heroes/centaur/centaur.vmdl", context )--cavalry
+    PrecacheResource( "model", "models/heroes/centaur/shield.vmdl", context )
+    PrecacheResource( "model", "models/heroes/centaur/bracer.vmdl", context )
+    PrecacheResource( "model", "models/heroes/centaur/tail.vmdl", context )
+    PrecacheResource( "model", "models/items/centaur/armor_sleek_1/armor_sleek_1.vmdl", context )
+    PrecacheResource( "model", "models/items/centaur/back_sleek_1/back_sleek_1.vmdl", context )
+    PrecacheResource( "model", "models/items/centaur/brutal_head_final/brutal_head_final.vmdl", context )
+    PrecacheResource( "model", "models/items/centaur/warrior_of_the_steppe_weapon/warrior_of_the_steppe_weapon.vmdl", context )
+
+    PrecacheResource( "model", "models/heroes/windrunner/windrunner.vmdl", context )--light_bowman
+    PrecacheResource( "model", "models/items/windrunner/windleafcape/windleafcape.vmdl", context )
+    PrecacheResource( "model", "models/items/windrunner/lyraleis_breeze/lyraleis_breeze.vmdl", context )
+    PrecacheResource( "model", "models/items/windrunner/quiver_of_the_northern_wind/quiver_of_the_northern_wind.vmdl", context )
+    PrecacheResource( "model", "models/items/windrunner/robin_hat/robin_hat.vmdl", context )
+    PrecacheResource( "model", "models/heroes/windrunner/windrunner_shoulderpads.vmdl", context )
+    PrecacheResource( "particle", "particles/units/heroes/hero_windrunner/windrunner_base_attack.vpcf", context )
+
+
+    PrecacheResource( "model", "models/creeps/lane_creeps/creep_good_siege/creep_good_siege_new_deathsim_winter.vmdl", context )--Catapult
 
     PrecacheResource( "model", "models/events/ti7/teams/teams_liquid_champions.vmdl", context )
     ---NewBee
@@ -97,6 +140,7 @@ function CAddonTemplateGameMode:OnGameRulesStateChange( keys )
     local newState = GameRules:State_Get()
     if newState == DOTA_GAMERULES_STATE_HERO_SELECTION then
         print("Player begin select hero")  --玩家处于选择英雄界面
+        DeepPrintTable(unit_number_table)
         random_tree("upper_left", "lower_right", 0.05, 0.05)
     elseif newState == DOTA_GAMERULES_STATE_PRE_GAME then
         print("Player ready game begin")  --玩家处于游戏准备状态

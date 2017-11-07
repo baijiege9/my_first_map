@@ -17,17 +17,17 @@ unit_number_table = {
             ['min'] = 0
         } ,
         --攻城车
-        ['Catapult'] = {
+        ['catapult'] = {
             ['max'] = 1,
             ['min'] = 0
         } ,
         --法师
-        ['MAGE'] = {
+        ['water_mage'] = {
             ['max'] = 1,
             ['min'] = 0
         } ,
         --枪兵
-        ['Lancer'] = {
+        ['lancer'] = {
             ['max'] = 1,
             ['min'] = 2
         } ,

@@ -218,9 +218,6 @@
 						"ModifierName"	"modifier_crt:50_nice"
 					}
 				}
-				"OnFailure"
-				{
-				}
 			}
 		}
 		"Modifiers"
@@ -243,17 +240,19 @@
 		}
 	}
 
+	// 移动冲锋中增加百分之二百的攻击力。但是有百分之五十机率miss
 	"cavalry_go"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"chaos_knight_phantasm"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BASIC"
+		// 移动冲锋中增加百分之百的攻击力。
 		"OnUnitMoved"
 		{
 			"ApplyModifier"
 			{
-				"Target"	"CASTER"
+				"Target"	"TARGET"
 				"ModifierName"	"modifier_cavalry_go"
 				"Duration"	"0.5"
 			}
@@ -268,9 +267,39 @@
 				"Duration"	"0.5"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"	"200"
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"	"300"
+					"MODIFIER_PROPERTY_MISS_PERCENTAGE"	"50"
 				}
 				"States"	{}
+			}
+		}
+	}
+
+	// 添加粒子特效
+	"water_attack"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"kunkka_torrent"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BASIC"
+		"OnAttack"	{}
+		"OnOwnerSpawned"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_water_attack"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_water_attack"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"StatusEffectName"	"particles/status_fx/status_effect_medusa_stone_gaze.vpcf"
+				"StatusEffectPriority"	"10"
 			}
 		}
 	}

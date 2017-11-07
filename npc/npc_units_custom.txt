@@ -690,7 +690,7 @@
 	"Infantry"
 	{
 		"BaseClass"	"npc_dota_creature"
-		"Ability1"	""
+		"Ability1"	"evd:50"
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -732,7 +732,7 @@
 		"MovementTurnRate"	"0.5"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"UnitLabel"	"Infantry"
-		"SelectOnSpawn"	"1"
+		"SelectOnSpawn"	"0"
 		"Creature"
 		{
 			"AttachWearables"
@@ -766,7 +766,16 @@
 					"ItemDef"	"7419"
 				}
 			}
+			"HPGain"	"0.1"
+			"ArmorGain"	"1"
+			"MagicResistGain"	"1"
+			"MoveSpeedGain"	"1"
+			"BountyGain"	"3"
+			"XPGain"	"100"
+			"DamageGain"	"1"
 		}
+		"RingRadius"	"80"
+		"Level"	"1"
 	}
 
 	// Bowman
@@ -820,6 +829,13 @@
 					"ItemDef"	"75"
 				}
 			}
+			"XPGain"	"100"
+			"BountyGain"	"3"
+			"MoveSpeedGain"	"1"
+			"MagicResistGain"	"1"
+			"ArmorGain"	"1"
+			"HPGain"	"0.1"
+			"DamageGain"	"1"
 		}
 		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"AttackRate"	"1"
@@ -847,16 +863,101 @@
 		"VisionDaytimeRange"	"1000"
 		"VisionNighttimeRange"	"1500"
 		"UnitLabel"	"black_bowman"
-		"SelectOnSpawn"	"1"
+		"SelectOnSpawn"	"0"
 		"ProjectileModel"	"particles/units/heroes/hero_drow/drow_base_attack.vpcf"
+		"Level"	"1"
+	}
+
+	"light_bowman"
+	{
+		"BaseClass"	"npc_dota_creature"
+		"Ability1"	"evd:80"
+		"Ability2"	""
+		"Ability3"	""
+		"Ability4"	""
+		"Ability5"	""
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+		"Model"	"models/heroes/windrunner/windrunner.vmdl"
+		"Creature"
+		{
+			"AttachWearables"
+			{
+				"Wearable1"
+				{
+					"ItemDef"	"4512"
+				}
+				"Wearable2"
+				{
+					"ItemDef"	"4454"
+				}
+				"Wearable3"
+				{
+					"ItemDef"	"5281"
+				}
+				"Wearable4"
+				{
+					"ItemDef"	"4473"
+				}
+				"Wearable5"
+				{
+					"ItemDef"	"23"
+				}
+			}
+			"MoveSpeedGain"	"1"
+			"MagicResistGain"	"1"
+			"ArmorGain"	"1"
+			"HPGain"	"0.1"
+			"BountyGain"	"3"
+			"XPGain"	"100"
+			"DamageGain"	"1"
+		}
+		"ModelScale"	"1"
+		"HasInventory"	"1"
+		"ConsideredHero"	"0"
+		"BountyXP"	"1"
+		"BountyGoldMin"	"1"
+		"BountyGoldMax"	"10"
+		"HealthBarOffset"	"-1"
+		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
+		"RingRadius"	"50"
+		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"ProjectileModel"	"particles/units/heroes/hero_windrunner/windrunner_base_attack.vpcf"
+		"ProjectileSpeed"	"400"
+		"AttackDamageMin"	"2"
+		"AttackDamageMax"	"1"
+		"AttackRate"	"1"
+		"AttackAcquisitionRange"	"1500"
+		"AttackRange"	"1000"
+		"AttackRangeBuffer"	"500"
+		"ArmorPhysical"	"0"
+		"MagicalResistance"	"0"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"	"250"
+		"MovementTurnRate"	"1"
+		"StatusHealth"	"2"
+		"StatusHealthRegen"	"0.1"
+		"VisionDaytimeRange"	"1500"
+		"VisionNighttimeRange"	"1000"
+		"Level"	"1"
+		"SelectOnSpawn"	"0"
 	}
 
 	// 骑兵
-	"cavalry_go"
+	"cavalry"
 	{
 		"BaseClass"	"npc_dota_creature"
-		"Ability1"	""
-		"Ability2"	""
+		"Ability1"	"cavalry_go"
+		"Ability2"	"evd:50"
 		"Ability3"	""
 		"Ability4"	""
 		"Ability5"	""
@@ -914,11 +1015,18 @@
 					"ItemDef"	"5058"
 				}
 			}
+			"HPGain"	"0.1"
+			"ArmorGain"	"1"
+			"MagicResistGain"	"1"
+			"MoveSpeedGain"	"1"
+			"XPGain"	"100"
+			"BountyGain"	"3"
+			"DamageGain"	"1"
 		}
 		"ArmorPhysical"	"0"
 		"MagicalResistance"	"0"
 		"MovementSpeed"	"200"
-		"MovementTurnRate"	"0.1"
+		"MovementTurnRate"	"3"
 		"AttackDamageMin"	"1"
 		"AttackDamageMax"	"1"
 		"AttackRate"	"2"
@@ -930,5 +1038,157 @@
 		"StatusHealthRegen"	"0.1"
 		"VisionDaytimeRange"	"1000"
 		"VisionNighttimeRange"	"1000"
+		"Level"	"1"
+		"SelectOnSpawn"	"0"
+	}
+
+	// 攻城车
+	"catapult"
+	{
+		"BaseClass"	"npc_dota_creature"
+		"Ability1"	""
+		"Ability2"	""
+		"Ability3"	""
+		"Ability4"	""
+		"Ability5"	""
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+		"Model"	"models/creeps/lane_creeps/creep_good_siege/creep_good_siege_new_deathsim_winter.vmdl"
+		"ModelScale"	"1"
+		"HasInventory"	"1"
+		"ConsideredHero"	"0"
+		"BountyXP"	"1"
+		"BountyGoldMin"	"1"
+		"BountyGoldMax"	"10"
+		"HealthBarOffset"	"-1"
+		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
+		"RingRadius"	"100"
+		"Creature"
+		{
+			"AttachWearables"
+			{
+				"Wearable1"
+				{
+					"ItemDef"	"362"
+				}
+				"Wearable2"
+				{
+					"ItemDef"	"363"
+				}
+				"Wearable3"
+				{
+					"ItemDef"	"364"
+				}
+				"Wearable4"
+				{
+					"ItemDef"	"4845"
+				}
+				"Wearable5"
+				{
+					"ItemDef"	"4850"
+				}
+				"Wearable6"
+				{
+					"ItemDef"	"4918"
+				}
+				"Wearable7"
+				{
+					"ItemDef"	"5058"
+				}
+			}
+			"HPGain"	"0.1"
+			"ArmorGain"	"1"
+			"MagicResistGain"	"1"
+			"MoveSpeedGain"	"1"
+			"XPGain"	"100"
+			"BountyGain"	"3"
+			"DamageGain"	"1"
+		}
+		"ArmorPhysical"	"0"
+		"MagicalResistance"	"0"
+		"MovementSpeed"	"100"
+		"MovementTurnRate"	"3"
+		"AttackDamageMin"	"1"
+		"AttackDamageMax"	"10"
+		"AttackRate"	"5"
+		"AttackRange"	"2000"
+		"AttackAcquisitionRange"	"1000"
+		"AttackRangeBuffer"	"0"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+		"StatusHealth"	"1"
+		"StatusHealthRegen"	"0.1"
+		"VisionDaytimeRange"	"500"
+		"VisionNighttimeRange"	"500"
+		"Level"	"1"
+		"SelectOnSpawn"	"0"
+		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
+	}
+
+	// 水魔法师。影魔模型加上白色粒子状态特效
+	"water_mage"
+	{
+		"BaseClass"	"npc_dota_creature"
+		"Ability1"	""
+		"Ability2"	""
+		"Ability3"	""
+		"Ability4"	""
+		"Ability5"	""
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+		"Model"	"models/creeps/lane_creeps/creep_bad_ranged/lane_dire_ranged_mega.vmdl"
+		"ModelScale"	"1"
+		"Level"	"1"
+		"HasInventory"	"1"
+		"ConsideredHero"	"1"
+		"BountyXP"	"1"
+		"BountyGoldMin"	"1"
+		"BountyGoldMax"	"10"
+		"HealthBarOffset"	"-1"
+		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
+		"RingRadius"	"50"
+		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"ProjectileModel"	"particles/econ/events/ti7/teleport_start_ti7_spin_water.vpcf"
+		"ProjectileSpeed"	"100"
+		"AttackDamageMin"	"0"
+		"AttackDamageMax"	"1"
+		"AttackRange"	"1000"
+		"AttackAcquisitionRange"	"1000"
+		"AttackRate"	"9"
+		"MagicalResistance"	"100"
+		"MovementSpeed"	"200"
+		"MovementTurnRate"	"2"
+		"StatusHealth"	"1.1"
+		"StatusHealthRegen"	"1"
+		"VisionDaytimeRange"	"500"
+		"VisionNighttimeRange"	"500"
+		"Creature"
+		{
+			"HPGain"	"0.1"
+			"DamageGain"	"1"
+			"ArmorGain"	"1"
+			"MagicResistGain"	"1"
+			"MoveSpeedGain"	"1"
+			"BountyGain"	"3"
+			"XPGain"	"100"
+		}
+		"SelectOnSpawn"	"0"
 	}
 }
