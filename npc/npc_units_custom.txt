@@ -1074,37 +1074,7 @@
 		"RingRadius"	"100"
 		"Creature"
 		{
-			"AttachWearables"
-			{
-				"Wearable1"
-				{
-					"ItemDef"	"362"
-				}
-				"Wearable2"
-				{
-					"ItemDef"	"363"
-				}
-				"Wearable3"
-				{
-					"ItemDef"	"364"
-				}
-				"Wearable4"
-				{
-					"ItemDef"	"4845"
-				}
-				"Wearable5"
-				{
-					"ItemDef"	"4850"
-				}
-				"Wearable6"
-				{
-					"ItemDef"	"4918"
-				}
-				"Wearable7"
-				{
-					"ItemDef"	"5058"
-				}
-			}
+			"AttachWearables"	{}
 			"HPGain"	"0.1"
 			"ArmorGain"	"1"
 			"MagicResistGain"	"1"
@@ -1131,13 +1101,15 @@
 		"Level"	"1"
 		"SelectOnSpawn"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"ProjectileModel"	"particles/econ/taunts/dark_willow/dark_willow_rose_taunt/dark_willow_rose_taunt.vpcf"
+		"ProjectileSpeed"	"500"
 	}
 
 	// 水魔法师。影魔模型加上白色粒子状态特效
 	"water_mage"
 	{
 		"BaseClass"	"npc_dota_creature"
-		"Ability1"	""
+		"Ability1"	"water_attack"
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -1153,7 +1125,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
-		"Model"	"models/creeps/lane_creeps/creep_bad_ranged/lane_dire_ranged_mega.vmdl"
+		"Model"	"models/heroes/nevermore/nevermore.vmdl"
 		"ModelScale"	"1"
 		"Level"	"1"
 		"HasInventory"	"1"
@@ -1166,7 +1138,7 @@
 		"RingRadius"	"50"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"ProjectileModel"	"particles/econ/events/ti7/teleport_start_ti7_spin_water.vpcf"
-		"ProjectileSpeed"	"100"
+		"ProjectileSpeed"	"200"
 		"AttackDamageMin"	"0"
 		"AttackDamageMax"	"1"
 		"AttackRange"	"1000"
@@ -1190,5 +1162,157 @@
 			"XPGain"	"100"
 		}
 		"SelectOnSpawn"	"0"
+	}
+
+	"lancer"
+	{
+		"BaseClass"	"npc_dota_creature"
+		"Ability1"	"lancer_slow"
+		"Ability2"	""
+		"Ability3"	""
+		"Ability4"	""
+		"Ability5"	""
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+		"Model"	"models/heroes/huskar/huskar.vmdl"
+		"MovementSpeed"	"200"
+		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackRange"	"300"
+		"AttackDamageMin"	"1"
+		"AttackDamageMax"	"1"
+		"VisionDaytimeRange"	"1000"
+		"VisionNighttimeRange"	"1000"
+		"StatusHealth"	"5"
+		"StatusHealthRegen"	"0.1"
+		"HealthBarOffset"	"-1"
+		"BountyXP"	"1"
+		"BountyGoldMin"	"1"
+		"BountyGoldMax"	"10"
+		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
+		"RingRadius"	"80"
+		"ModelScale"	"1"
+		"Level"	"1"
+		"HasInventory"	"1"
+		"ConsideredHero"	"1"
+		"AttackRate"	"2"
+		"AttackAcquisitionRange"	"500"
+		"MovementTurnRate"	"1"
+		"Creature"
+		{
+			"HPGain"	"0.1"
+			"DamageGain"	"1"
+			"ArmorGain"	"1"
+			"MagicResistGain"	"1"
+			"MoveSpeedGain"	"1"
+			"BountyGain"	"1"
+			"XPGain"	"100"
+			"AttachWearables"
+			{
+				"Wearable1"
+				{
+					"ItemDef"	"272"
+				}
+				"Wearable2"
+				{
+					"ItemDef"	"269"
+				}
+				"Wearable3"
+				{
+					"ItemDef"	"270"
+				}
+				"Wearable4"
+				{
+					"ItemDef"	"271"
+				}
+				"Wearable5"
+				{
+					"ItemDef"	"268"
+				}
+			}
+		}
+	}
+
+	// 水兵
+	"sailor"
+	{
+		"BaseClass"	"npc_dota_creature"
+		"Ability1"	"evd:50"
+		"Ability2"	""
+		"Ability3"	""
+		"Ability4"	""
+		"Ability5"	""
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+		"Model"	"models/heroes/kunkka/kunkka.vmdl"
+		"Creature"
+		{
+			"AttachWearables"
+			{
+				"Wearable1"
+				{
+					"ItemDef"	"4016"
+				}
+				"Wearable2"
+				{
+					"ItemDef"	"4033"
+				}
+				"Wearable3"
+				{
+					"ItemDef"	"4011"
+				}
+				"Wearable4"
+				{
+					"ItemDef"	"6179"
+				}
+				"Wearable5"
+				{
+					"ItemDef"	"12"
+				}
+			}
+		}
+		"ModelScale"	"1"
+		"Level"	"1"
+		"AttackDamageMin"	"1"
+		"AttackDamageMax"	"1"
+		"AttackRate"	"1"
+		"VisionDaytimeRange"	"1000"
+		"VisionNighttimeRange"	"1000"
+		"StatusHealth"	"4"
+		"StatusHealthRegen"	"0.1"
+		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackAcquisitionRange"	"1000"
+		"AttackRange"	"100"
+		"AttackRangeBuffer"	"0"
+		"ArmorPhysical"	"0"
+		"MagicalResistance"	"0"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"	"200"
+		"MovementTurnRate"	"1"
+		"BountyXP"	"1"
+		"BountyGoldMin"	"1"
+		"BountyGoldMax"	"10"
+		"HealthBarOffset"	"-1"
+		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
+		"RingRadius"	"70"
+		"HasInventory"	"1"
+		"ConsideredHero"	"0"
 	}
 }

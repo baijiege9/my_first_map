@@ -16,16 +16,14 @@ function Precache( context )
     --Cache the creature models
     PrecacheUnitByNameSync( "npc_dota_creature_basic_zombie", context )
     PrecacheModel( "npc_dota_creature_basic_zombie", context )
-
     PrecacheResource( "particle", "particles/units/heroes/hero_windrunner/wr_taunt_kiss_heart.vpcf", context )--贪魔爱心特效my master
-    
-	PrecacheResource( "particle", "particles/econ/courier/courier_gold_horn/courier_gold_horn_ambient_feather.vpcf", context )
-	PrecacheResource( "particle", "particles/econ/courier/courier_jadehoof_ambient/jadehoof_special_blossoms.vpcf", context )
+
+    PrecacheResource( "particle", "particles/econ/courier/courier_gold_horn/courier_gold_horn_ambient_feather.vpcf", context )
+    PrecacheResource( "particle", "particles/econ/courier/courier_jadehoof_ambient/jadehoof_special_blossoms.vpcf", context )
     PrecacheResource( "particle", "particles/econ/items/omniknight/hammer_ti6_immortal/omniknight_pu_ti6_heal_hammers.vpcf", context )
     PrecacheResource( "model", "models/items/courier/pw_zombie/pw_zombie.vmdl", context )
 
     PrecacheResource( "model", "models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged_mega.vmdl", context )--金魔法师
-    
     
     PrecacheResource( "model", "models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged.vmdl", context )--木魔法师
 
@@ -33,9 +31,10 @@ function Precache( context )
 
     PrecacheResource( "model", "models/creeps/lane_creeps/creep_bad_ranged/lane_dire_ranged_mega.vmdl", context )--土
 
-    PrecacheResource( "model", "models/creeps/lane_creeps/creep_bad_ranged/lane_dire_ranged_mega.vmdl", context )--水
+    PrecacheResource( "model", "models/heroes/nevermore/nevermore.vmdl", context )--水
     PrecacheResource( "particle", "particles/status_fx/status_effect_medusa_stone_gaze.vpcf", context )
     PrecacheResource( "particle", "particles/econ/events/ti7/teleport_start_ti7_spin_water.vpcf", context )
+    PrecacheResource( "particle", "particles/dev/library/base_follow_absorigin_instant.vpcf", context  )
 
     PrecacheResource( "model", "models/heroes/drow/drow.vmdl", context )--black_bowman
     PrecacheResource( "particle", "particles/units/heroes/hero_drow/drow_base_attack.vpcf", context )--小黑投射物
@@ -45,6 +44,21 @@ function Precache( context )
     PrecacheResource( "model", "models/items/drow/boots_of_the_envious_archer/boots_of_the_envious_archer.vmdl", context )
     PrecacheResource( "model", "models/items/drow/black_wind_shoulders/black_wind_shoulders.vmdl", context )
     PrecacheResource( "model", "models/heroes/drow/drow_bracers.vmdl", context )
+
+    PrecacheResource( "model", "models/heroes/kunkka/kunkka.vmdl", context )--sailor 水手
+    PrecacheResource( "model", "models/items/kunkka/kunkka_bandana.vmdl", context )
+    PrecacheResource( "model", "models/items/kunkka/kunkka_hook.vmdl", context )
+    PrecacheResource( "model", "models/items/kunkka/kunkka_pegleg.vmdl", context )
+    PrecacheResource( "model", "models/items/kunkka/claddish_shoulder/claddish_shoulder.vmdl", context )
+    PrecacheResource( "model", "models/heroes/kunkka/kunkka_sword.vmdl", context )
+    
+    PrecacheResource( "model", "models/heroes/huskar/huskar.vmdl", context ) --lancer 枪兵
+    PrecacheResource( "model", "models/heroes/huskar/huskar_bracer.vmdl", context )
+    PrecacheResource( "model", "models/heroes/huskar/huskar_dagger.vmdl", context )
+    PrecacheResource( "model", "models/heroes/huskar/huskar_helmet.vmdl", context )
+    PrecacheResource( "model", "models/heroes/huskar/huskar_shoulder.vmdl", context )
+    PrecacheResource( "model", "models/heroes/huskar/huskar_spear.vmdl", context )
+    
 
     PrecacheResource( "model", "models/heroes/centaur/centaur.vmdl", context )--cavalry
     PrecacheResource( "model", "models/heroes/centaur/shield.vmdl", context )
@@ -63,8 +77,8 @@ function Precache( context )
     PrecacheResource( "model", "models/heroes/windrunner/windrunner_shoulderpads.vmdl", context )
     PrecacheResource( "particle", "particles/units/heroes/hero_windrunner/windrunner_base_attack.vpcf", context )
 
-
     PrecacheResource( "model", "models/creeps/lane_creeps/creep_good_siege/creep_good_siege_new_deathsim_winter.vmdl", context )--Catapult
+    PrecacheResource( "particle", "particles/econ/taunts/dark_willow/dark_willow_rose_taunt/dark_willow_rose_taunt.vpcf", context )
 
     PrecacheResource( "model", "models/events/ti7/teams/teams_liquid_champions.vmdl", context )
     ---NewBee

@@ -5,36 +5,6 @@
 {
 	"Version"		"1"
 
-	"The_city_was_captured"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"arc_warden_spark_wraith"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
-		"precache"
-		{
-		}
-		// 被攻陷
-		"OnAttacked"
-		{
-			"RunScript"
-			{
-				"Target"	"CASTER"
-				"ScriptFile"	"scripts/vscripts/abilities.lua"
-				"Function"	"the_city_was_captured"
-			}
-		}
-		// 播放音乐
-		"OnAttacked"
-		{
-			"FireSound"
-			{
-				"EffectName"	"TheCityWasCaptured"
-			}
-		}
-	}
-
 	// 贪墨技能，不可攻击
 	"follow_human"
 	{
@@ -282,7 +252,26 @@
 		"AbilityTextureName"	"kunkka_torrent"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BASIC"
-		"OnAttack"	{}
+		"precache"
+		{
+			"particle"	"particles/dev/library/base_follow_absorigin_instant.vpcf"
+		}
+		// 1000码范围百分之百减少攻击速度和移动速度
+		"OnAttack"
+		{
+			"ApplyModifier"
+			{
+				"Target"
+				{
+					"Types"	"DOTA_UNIT_TARGET_BASIC"
+					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Flags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+					"Center"	"TARGET"
+					"Radius"	"1000"
+				}
+				"Duration"	"1"
+			}
+		}
 		"OnOwnerSpawned"
 		{
 			"ApplyModifier"
@@ -300,6 +289,53 @@
 				"IsHidden"	"1"
 				"StatusEffectName"	"particles/status_fx/status_effect_medusa_stone_gaze.vpcf"
 				"StatusEffectPriority"	"10"
+				"IsDebuff"	"0"
+			}
+			"modifier_water_slow_down"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Duration"	"3"
+				"IsDebuff"	"1"
+				"IsPurgable"	"1"
+				"EffectName"	"particles/dev/library/base_follow_absorigin_instant.vpcf"
+				"States"	{}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BASE_OVERRIDE"	"100"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"1"
+				}
+			}
+		}
+	}
+
+	"lancer_slow"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"huskar_burning_spear"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"OnAttack"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"TARGET"
+				"Duration"	"1"
+				"ModifierName"	"modifier_lancer_slow"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_lancer_slow"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"	{}
+				"States"
+				{
+					"MODIFIER_STATE_ROOTED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"Duration"	"1"
+				"IsHidden"	"1"
 			}
 		}
 	}
