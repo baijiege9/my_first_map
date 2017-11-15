@@ -17,11 +17,39 @@ function Precache( context )
     PrecacheUnitByNameSync( "npc_dota_creature_basic_zombie", context )
     PrecacheModel( "npc_dota_creature_basic_zombie", context )
     PrecacheResource( "particle", "particles/units/heroes/hero_windrunner/wr_taunt_kiss_heart.vpcf", context )--贪魔爱心特效my master
+    
+    PrecacheResource( "particle", "particles/units/heroes/hero_bane/bane_projectile_attack_b.vpcf", context )
+    PrecacheResource( "particle", "particles/econ/items/crystal_maiden/crystal_maiden_ward_staff/crystal_maiden_ward_staff_model.vpcf", context )
+    PrecacheResource( "particle", "particles/econ/items/crystal_maiden/ti7_immortal_shoulder/cm_ti7_immortal_base_attack.vpcf", context )--冰雪投掷物
+    PrecacheResource( "model", "models/items/wards/esp_eye_of_thunderkeg/esp_eye_of_thunderkeg.vmdl", context )--Ehome
+    PrecacheResource( "model", "models/items/wards/esl_wardchest_woody/esl_wardchest_woody.vmdl", context )--A_team
+    PrecacheResource( "model", "models/items/wards/eye_of_lyralei/eye_of_lyralei.vmdl", context )--hellraisers
+    PrecacheResource( "model", "models/items/wards/eyeofforesight/eyeofforesight.vmdl", context )--LGD
+    PrecacheResource( "model", "models/items/wards/esl_wardchest_living_overgrowth/esl_wardchest_living_overgrowth.vmdl", context )--LGD
+    PrecacheResource( "model", "models/items/wards/alliance_ward/alliance_ward.vmdl", context )
+    PrecacheResource( "model", "models/items/wards/arcticwatchtower/arcticwatchtower.vmdl", context )--Secret
+    PrecacheResource( "model", "models/items/wards/atlas_burden_ward/atlas_burden_ward.vmdl", context )--MVP
+    PrecacheResource( "model", "models/items/wards/blood_seeker_ward/bloodseeker_ward.vmdl", context )--IG
+    PrecacheResource( "model", "models/items/wards/d2lp_4_ward/d2lp_4_ward.vmdl", context )--IGV
+    PrecacheResource( "model", "models/items/wards/the_monkey_sentinel/the_monkey_sentinel.vmdl", context )--wings
+    PrecacheResource( "model", "models/items/wards/eye_of_avernus_ward/eye_of_avernus_ward.vmdl", context )--Liquid 
+    PrecacheResource( "model", "models/items/wards/esl_one_jagged_vision/esl_one_jagged_vision.vmdl", context )--VGR
+    PrecacheResource( "model", "models/items/wards/esl_wardchest_direling_ward/esl_wardchest_direling_ward.vmdl", context )--OG
+    PrecacheResource( "model", "models/items/wards/esl_wardchest_four_armed_observer/esl_wardchest_four_armed_observer.vmdl", context )--Escape
+    PrecacheResource( "model", "models/items/wards/esl_wardchest_franglerfish_ward/esl_wardchest_franglerfish_ward.vmdl", context )--C9
+    PrecacheResource( "model", "models/items/wards/esl_wardchest_rockshell_terrapin/esl_wardchest_rockshell_terrapin.vmdl", context )--COL
+    PrecacheResource( "model", "models/items/wards/frozen_formation/frozen_formation.vmdl", context )--EG
+    PrecacheResource( "model", "models/items/wards/watcher_below_ward/watcher_below_ward.vmdl", context )--NAVI
+    PrecacheResource( "model", "models/items/wards/winged_watcher/winged_watcher.vmdl", context )--DC
+    PrecacheResource( "model", "models/items/wards/witchdoctor_ward/witchdoctor_ward.vmdl", context )--VP
+    PrecacheResource( "model", "models/items/wards/phoenix_ward/phoenix_ward.vmdl", context )--TNC
+    PrecacheResource( "model", "models/items/wards/skywrath_sentinel/skywrath_sentinel.vmdl", context )--LFY
+    PrecacheResource( "model", "models/items/wards/sea_dogs_watcher/sea_dogs_watcher.vmdl", context )--Execration
 
     PrecacheResource( "particle", "particles/econ/courier/courier_gold_horn/courier_gold_horn_ambient_feather.vpcf", context )
     PrecacheResource( "particle", "particles/econ/courier/courier_jadehoof_ambient/jadehoof_special_blossoms.vpcf", context )
     PrecacheResource( "particle", "particles/econ/items/omniknight/hammer_ti6_immortal/omniknight_pu_ti6_heal_hammers.vpcf", context )
-    PrecacheResource( "model", "models/items/courier/pw_zombie/pw_zombie.vmdl", context )
+    PrecacheResource( "model", "models/items/wards/monty_ward/monty_ward.vmdl", context )
 
     PrecacheResource( "model", "models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged_mega.vmdl", context )--金魔法师
     
@@ -78,11 +106,11 @@ function Precache( context )
     PrecacheResource( "particle", "particles/units/heroes/hero_windrunner/windrunner_base_attack.vpcf", context )
 
     PrecacheResource( "model", "models/creeps/lane_creeps/creep_good_siege/creep_good_siege_new_deathsim_winter.vmdl", context )--Catapult
-    PrecacheResource( "particle", "particles/econ/taunts/dark_willow/dark_willow_rose_taunt/dark_willow_rose_taunt.vpcf", context )
+    PrecacheResource( "particle", "particles/base_attacks/ranged_tower_bad_trail_b.vpcf", context )
 
     PrecacheResource( "model", "models/events/ti7/teams/teams_liquid_champions.vmdl", context )
     ---NewBee
-    PrecacheResource( "particle", "particles/units/heroes/hero_alchemist/alchemist_unstableconc_flyiong_bottl.vpcf", context )
+    PrecacheResource( "particle", "particles/econ/items/bounty_hunter/bounty_hunter_weapon_right_darksteel/bounty_hunter_hand_r_darksteel_b.vpcf", context )
     PrecacheResource( "model", "models/events/ti6/teams/newbee_3dlogo_model.vmdl", context )
     ---A队
     PrecacheResource( "model", "models/events/ti6/teams/team_111474.vmdl", context )
@@ -125,7 +153,7 @@ function CAddonTemplateGameMode:InitGameMode()
     GameRules:SetHeroRespawnEnabled(false)--关闭默认的英雄复活机制
     GameRules:SetUseUniversalShopMode(true)--全图物品
     GameModeEntity:SetUnseenFogOfWarEnabled(true)--启用战争迷雾
-    GameModeEntity:SetStashPurchasingDisabled(false) --关闭储存处购买
+    GameModeEntity:SetStashPurchasingDisabled(true) --关闭储存处购买
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 1 )--2
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 1 )--3
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_CUSTOM_1, 1 )--6
@@ -154,7 +182,6 @@ function CAddonTemplateGameMode:OnGameRulesStateChange( keys )
     local newState = GameRules:State_Get()
     if newState == DOTA_GAMERULES_STATE_HERO_SELECTION then
         print("Player begin select hero")  --玩家处于选择英雄界面
-        DeepPrintTable(unit_number_table)
         random_tree("upper_left", "lower_right", 0.05, 0.05)
     elseif newState == DOTA_GAMERULES_STATE_PRE_GAME then
         print("Player ready game begin")  --玩家处于游戏准备状态
@@ -199,7 +226,7 @@ function CAddonTemplateGameMode:OnNPCSpawned( keys )
                 follow_greevil:MoveToNPC(NPC)
                 return 30
             end,
-            60
+            5
         )
     end
 end
@@ -232,8 +259,10 @@ function CAddonTemplateGameMode:OnEntityKilled( keys )
         local killed_unit_team = killed:GetTeamNumber()
         unit_number_table[killed_name]['buiding_team_id'] = buiding_team
         unit_number_table[killed_name]['buiding_control'] = player_teamid
+        local flag = unit_number_table[killed_name]['flag']
         --Create_unit:set_team_and_controler(killed_name, buiding_team, player_teamid)
-        if killed_unit_team == 5 then
+        if flag == 0 then
+            unit_number_table[killed_name]['flag'] = 1
             local random_number = RandomInt(1,10)
             print('random_number')
             print(random_number)

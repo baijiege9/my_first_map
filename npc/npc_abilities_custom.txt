@@ -11,8 +11,10 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"enchantress_untouchable"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"CastFilterRejectCaster"	"0"
+		"MaxLevel"	"1"
+		"RequiredLevel"	"1"
 		"AbilityCastPoint"	"0"
 		"AbilityCastRange"	"600"
 		"precache"
@@ -55,13 +57,15 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"phantom_assassin_blur"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"MaxLevel"	"1"
+		"RequiredLevel"	"1"
 		"AbilityCastPoint"	"0"
 		"precache"
 		{
 			"particle"	"particles/econ/courier/courier_gold_horn/courier_gold_horn_ambient_feather.vpcf"
 		}
-		"OnOwnerSpawned"
+		"OnAttacked"
 		{
 			"ApplyModifier"
 			{
@@ -81,7 +85,7 @@
 				"EffectAttachType"	"follow_overhead"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_AVOID_CONSTANT"	"50"
+					"MODIFIER_PROPERTY_EVASION_CONSTANT"	"50"
 				}
 				"IsHidden"	"0"
 			}
@@ -94,13 +98,15 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"phantom_assassin_arcana_blur"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"MaxLevel"	"1"
+		"RequiredLevel"	"1"
 		"AbilityCastPoint"	"0"
 		"precache"
 		{
 			"particle"	"particles/econ/courier/courier_gold_horn/courier_gold_horn_ambient_feather.vpcf"
 		}
-		"OnOwnerSpawned"
+		"OnAttacked"
 		{
 			"ApplyModifier"
 			{
@@ -120,7 +126,7 @@
 				"EffectAttachType"	"follow_overhead"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_AVOID_CONSTANT"	"90"
+					"MODIFIER_PROPERTY_EVASION_CONSTANT"	"90"
 				}
 				"IsHidden"	"0"
 			}
@@ -133,13 +139,15 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"brewmaster_drunken_brawler"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"MaxLevel"	"1"
+		"RequiredLevel"	"1"
 		"AbilityCastPoint"	"0"
 		"precache"
 		{
 			"particle"	"particles/econ/courier/courier_gold_horn/courier_gold_horn_ambient_feather.vpcf"
 		}
-		"OnOwnerSpawned"
+		"OnAttacked"
 		{
 			"ApplyModifier"
 			{
@@ -159,7 +167,7 @@
 				"EffectAttachType"	"follow_overhead"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_AVOID_CONSTANT"	"80"
+					"MODIFIER_PROPERTY_EVASION_CONSTANT"	"80"
 				}
 				"IsHidden"	"0"
 			}
@@ -171,24 +179,13 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"juggernaut_blade_dance"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"MaxLevel"	"1"
+		"RequiredLevel"	"1"
+		"AbilityCastPoint"	"0"
 		"precache"
 		{
 			"particle"	"particles/econ/courier/courier_jadehoof_ambient/jadehoof_special_blossoms.vpcf"
-		}
-		"OnAttack"
-		{
-			"Random"
-			{
-				"OnSuccess"
-				{
-					"ApplyModifier"
-					{
-						"Target"	"ATTACKER"
-						"ModifierName"	"modifier_crt:50_nice"
-					}
-				}
-			}
 		}
 		"Modifiers"
 		{
@@ -206,6 +203,23 @@
 					"MODIFIER_PROPERTY_MISS_PERCENTAGE"	"10"
 					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"	"200"
 				}
+				"Duration"	"5"
+				"OnAttack"
+				{
+					"Random"
+					{
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"Target"	"ATTACKER"
+								"ModifierName"	"modifier_crt:50_nice"
+							}
+						}
+						"Chance"	"50"
+						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_JUGG_CRIT"
+					}
+				}
 			}
 		}
 	}
@@ -216,31 +230,32 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"chaos_knight_phantasm"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BASIC"
-		// 移动冲锋中增加百分之百的攻击力。
-		"OnUnitMoved"
-		{
-			"ApplyModifier"
-			{
-				"Target"	"TARGET"
-				"ModifierName"	"modifier_cavalry_go"
-				"Duration"	"0.5"
-			}
-		}
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"MaxLevel"	"1"
+		"RequiredLevel"	"1"
+		"AbilityCastPoint"	"0"
 		"Modifiers"
 		{
 			"modifier_cavalry_go"
 			{
-				"Attributes"	"MODIFIER_ATTRIBUTE_NONE | MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Passive"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Passive"	"0"
 				"IsBuff"	"1"
-				"Duration"	"0.5"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"	"300"
-					"MODIFIER_PROPERTY_MISS_PERCENTAGE"	"50"
 				}
 				"States"	{}
+				"OnUnitMoved"
+				{
+					"ApplyModifier"
+					{
+						"Target"	"TARGET"
+						"ModifierName"	"modifier_cavalry_go"
+						"Duration"	"2"
+					}
+				}
+				"Duration"	"2"
 			}
 		}
 	}
@@ -251,26 +266,13 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"kunkka_torrent"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"MaxLevel"	"1"
+		"RequiredLevel"	"1"
+		"AbilityCastPoint"	"0"
 		"precache"
 		{
 			"particle"	"particles/dev/library/base_follow_absorigin_instant.vpcf"
-		}
-		// 1000码范围百分之百减少攻击速度和移动速度
-		"OnAttack"
-		{
-			"ApplyModifier"
-			{
-				"Target"
-				{
-					"Types"	"DOTA_UNIT_TARGET_BASIC"
-					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Flags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-					"Center"	"TARGET"
-					"Radius"	"1000"
-				}
-				"Duration"	"1"
-			}
 		}
 		"OnOwnerSpawned"
 		{
@@ -290,6 +292,21 @@
 				"StatusEffectName"	"particles/status_fx/status_effect_medusa_stone_gaze.vpcf"
 				"StatusEffectPriority"	"10"
 				"IsDebuff"	"0"
+				"Duration"	"3"
+				// 1000码范围百分之百减少攻击速度和移动速度
+				"OnAttack"
+				{
+					"ApplyModifier"
+					{
+						"Target"
+						{
+							"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							"Center"	"TARGET"
+							"Radius"	"1000"
+						}
+						"ModifierName"	"modifier_water_slow_down"
+					}
+				}
 			}
 			"modifier_water_slow_down"
 			{
@@ -304,6 +321,20 @@
 					"MODIFIER_PROPERTY_MOVESPEED_BASE_OVERRIDE"	"100"
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"1"
 				}
+				"EffectAttachType"	"attach_origin"
+				"OnAttack"
+				{
+					"ApplyModifier"
+					{
+						"Target"
+						{
+							"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							"Center"	"TARGET"
+							"Radius"	"1000"
+						}
+						"ModifierName"	"modifier_water_slow_down"
+					}
+				}
 			}
 		}
 	}
@@ -312,30 +343,33 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"huskar_burning_spear"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"OnAttack"
-		{
-			"ApplyModifier"
-			{
-				"Target"	"TARGET"
-				"Duration"	"1"
-				"ModifierName"	"modifier_lancer_slow"
-			}
-		}
+		"MaxLevel"	"1"
+		"RequiredLevel"	"1"
+		"AbilityCastPoint"	"0"
 		"Modifiers"
 		{
 			"modifier_lancer_slow"
 			{
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
 				"Properties"	{}
 				"States"
 				{
 					"MODIFIER_STATE_ROOTED"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
-				"Duration"	"1"
-				"IsHidden"	"1"
+				"Duration"	"10"
+				"IsHidden"	"0"
+				"IsDebuff"	"1"
+				"IsPurgable"	"1"
+				"Passive"	"0"
+				"OnAttack"
+				{
+					"ApplyModifier"
+					{
+						"Target"	"TARGET"
+						"ModifierName"	"modifier_lancer_slow"
+					}
+				}
 			}
 		}
 	}

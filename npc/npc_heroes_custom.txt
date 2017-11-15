@@ -13,12 +13,12 @@
 		// Hero to override
 		"override_hero"	"npc_dota_hero_templar_assassin"
 		// Ability 1
-		"Ability1"	"templar_assassin_refraction_holdout"
+		"Ability1"	""
 		// Range of vision at night time.
 		"VisionNighttimeRange"	"1800"
 		"Ability2"	""
-		"Ability3"	""
-		"Ability4"	""
+		"Ability3"	"crt:50_clone"
+		"Ability4"	"crt:50"
 		"Ability5"	""
 		"Ability6"	""
 		"Ability7"	""
