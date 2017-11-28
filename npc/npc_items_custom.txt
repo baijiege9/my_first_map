@@ -21,6 +21,13 @@
 		"ItemKillable"	"1"
 		"ItemPermanent"	"1"
 		"ItemRequirements"	{}
+		"Modifiers"
+		{
+			"modifier_item_winter_gift1"
+			{
+				"Passive"	"1"
+			}
+		}
 	}
 
 	"item_winter_gift2"
@@ -37,6 +44,13 @@
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
 		"ItemPermanent"	"1"
 		"ItemRequirements"	{}
+		"Modifiers"
+		{
+			"modifier_item_winter_gift2"
+			{
+				"Passive"	"1"
+			}
+		}
 	}
 
 	"item_winter_gift3"
@@ -53,5 +67,12 @@
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
 		"ItemPermanent"	"1"
 		"ItemRequirements"	{}
+		"Modifiers"
+		{
+			"modifier_item_winter_gift3"
+			{
+				"Passive"	"1"
+			}
+		}
 	}
 }

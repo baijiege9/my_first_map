@@ -1,8 +1,22 @@
 require('creat_unit')
 require('unit_number_table')
+require('water_slow')
 
 if CAddonTemplateGameMode == nil then
     CAddonTemplateGameMode = class({})
+end
+temp_item_number_table = {}
+if greevil_table == nil then
+    greevil_table={
+    [2] = 0,
+    [3] = 0,
+    [6] = 0,
+    [7] = 0,
+    [8] = 0,
+    [9] = 0,
+    [10] = 0,
+    [11] = 0
+}
 end
 
 function Precache( context )
@@ -152,8 +166,10 @@ function CAddonTemplateGameMode:InitGameMode()
     local GameModeEntity = GameRules:GetGameModeEntity()
     GameRules:SetHeroRespawnEnabled(false)--关闭默认的英雄复活机制
     GameRules:SetUseUniversalShopMode(true)--全图物品
-    GameModeEntity:SetUnseenFogOfWarEnabled(true)--启用战争迷雾
+    GameModeEntity:SetUnseenFogOfWarEnabled(false)--启用战争迷雾
     GameModeEntity:SetStashPurchasingDisabled(true) --关闭储存处购买
+    GameModeEntity:SetBuybackEnabled(false) --禁止买活
+    GameRules:SetStartingGold(0)--设置初始金钱为0
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 1 )--2
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 1 )--3
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_CUSTOM_1, 1 )--6
@@ -172,6 +188,7 @@ function CAddonTemplateGameMode:InitGameMode()
     ListenToGameEvent("player_chat", Dynamic_Wrap(CAddonTemplateGameMode, "PlayerChat"), self)
     --监听单位重生或者创建事件
     ListenToGameEvent("npc_spawned", Dynamic_Wrap(CAddonTemplateGameMode, "OnNPCSpawned"), self)
+    CustomGameEventManager:RegisterListener( "test", OnBubble )
 end
 
 function CAddonTemplateGameMode:OnGameRulesStateChange( keys )
@@ -182,28 +199,17 @@ function CAddonTemplateGameMode:OnGameRulesStateChange( keys )
     local newState = GameRules:State_Get()
     if newState == DOTA_GAMERULES_STATE_HERO_SELECTION then
         print("Player begin select hero")  --玩家处于选择英雄界面
-        random_tree("upper_left", "lower_right", 0.05, 0.05)
+        random_tree("upper_left", "lower_right", 0.01, 0.01)
     elseif newState == DOTA_GAMERULES_STATE_PRE_GAME then
         print("Player ready game begin")  --玩家处于游戏准备状态
-        --CustomUI:DynamicHud_Create(-1,"bubble","file://{resources}/layout/custom_game/bubble.xml",nil)
+       -- CustomUI:DynamicHud_Create(-1,"bubble","file://{resources}/layout/custom_game/bubble.xml",nil)
     elseif newState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
         print("Player game begin")  --玩家开始游戏
         Create_unit_start()
     end
 end
 
-function OnBubble( index,keys )
-    print('Onbubble')
-    --index 是事件的index值
-    --keys 是一个table，固定包含一个触发的PlayerID，其余的是传递过来的数据
-    -- CustomUI:DynamicHud_Create(keys.PlayerID,"bubble","file://{resources}/layout/custom_game/bubble.xml",nil)
-    CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(keys.PlayerID), "avalon_display_bubble", {text="test"} )
-    CustomUI:DynamicHud_Destroy(keys.PlayerID,"bubble")
-end
-
 function CAddonTemplateGameMode:OnNPCSpawned( keys )
-    print("OnNPCSpawned")
-    DeepPrintTable(keys)    --详细打印传递进来的表
     local NPC = EntIndexToHScript(keys.entindex)
     local NPC_name = NPC:GetUnitName()
     local NPC_unit_label = NPC:GetUnitLabel()
@@ -217,30 +223,47 @@ function CAddonTemplateGameMode:OnNPCSpawned( keys )
         local greevil = 'greevil'..NPC_team 
         print(greevil)
         local follow_greevil = CreateUnitByName(greevil, pos, false, nil, nil, NPC_team)
+        temp_item_number_table[NPC_team] = 0
         follow_greevil:AddNewModifier(nil, nil, "modifier_phased", {duration=0.1})
         GameRules:GetGameModeEntity():SetContextThink(
             DoUniqueString("move_to_npc"),
             function ()
+                if follow_greevil == nil then
+                    return false
+                end
                 --follow_greevil:MoveToPosition(vector)
                 --follow_greevil:PickupDroppedItem(item handle)
                 follow_greevil:MoveToNPC(NPC)
+                if NPC:GetNumItemsInInventory()==9 then
+                    GameRules:SetCustomVictoryMessage(NPC_team.."Team Win")
+                    GameRules:SetCustomVictoryMessageDuration(9)
+                    GameRules:SetGameWinner(NPC_team)
+                elseif NPC:GetNumItemsInInventory()>temp_item_number_table[NPC_team] then
+                    temp_item_number_table[NPC_team] = NPC:GetNumItemsInInventory()
+                    local text = NPC_team.."Team have gift:"..temp_item_number_table[NPC_team]
+                    GameRules:SendCustomMessage(text,NPC_team,1)
+                end
+                print('fewfwe')
+                local number = NPC:GetNumItemsInInventory()
+                print(number)
+                print(NPC_team)
                 return 30
             end,
             5
         )
+        local buiding_control = NPC:GetMainControllingPlayer()
+        greevil_table[greevil] = follow_greevil
+        GameRules:SendCustomMessage('Your team is'..NPC_team,NPC_team,1)
+        GameRules:SendCustomMessage('你的队伍编号是'..NPC_team,NPC_team,1)
     end
 end
 
 function CAddonTemplateGameMode:OnEntityHurt( keys )
-    print("OnEntityHurt")
-    DeepPrintTable(keys)    --详细打印传递进来的表
     local attacker = EntIndexToHScript(keys.entindex_attacker)
     local killed = EntIndexToHScript(keys.entindex_killed)
 end
 
 function CAddonTemplateGameMode:OnEntityKilled( keys )
-    print("OnEntityKilled")
-    DeepPrintTable(keys)    --详细打印传递进来的表
     local attacker = EntIndexToHScript(keys.entindex_attacker)
     local killed = EntIndexToHScript(keys.entindex_killed)
     local killed_name = killed:GetUnitName()
@@ -286,14 +309,38 @@ function CAddonTemplateGameMode:OnEntityKilled( keys )
                 item:LaunchLoot(false, 200, 0.75, pos_launch)
             end
         end
+    elseif killed_unit_label == "player_hero" then
+        local killed_team = killed:GetTeamNumber()
+        local position = killed:GetAbsOrigin()
+        print('baijiegedfe')
+        local unit = greevil_table["greevil"..killed_team]
+        if unit:HasAbility('follow_human') then
+            unit:RemoveAbility('follow_human')
+        end
+        if unit:HasModifier("modifier_follow_human") then
+            unit:RemoveModifierByName("modifier_follow_human")
+        end
+        local text = '<font color="while">The G fat:Team'..killed_team..'is loseed<br/>G胖说刚刚那个编号的队伍失败了。<br/> G  толстый  сказал  только, что  команда  не  номер </font> '
+        GameRules:SendCustomMessage(text,0,1)
+        GameRules:SendCustomMessage('<font color="white">你的贪魔：My master，goodbye, 我永远爱你</font>',killed_team,1)
     end
 end
 
 function CAddonTemplateGameMode:PlayerChat( keys )
     print("PlayerSay")
     DeepPrintTable(keys)    --详细打印传递进来的表
-    print(abc)
-    --UTIL_MessageText(int playerId, string message, int r, int g, int b, int a) 
+    if keys.teamonly == 1 then
+        GameRules:SendCustomMessage('<font color="white">greevil: My master, I love you.</font>',keys.playerid,1)
+    end
+    if keys.text == "我爱你" then
+        GameRules:SendCustomMessage('<font color="white">贪魔：我的主人，我爱你</font>',keys.playerid,1)
+    elseif keys.text == "你好" then
+        GameRules:SendCustomMessage('<font color="white">贪魔：我会一辈子跟随你</font>',keys.playerid,1)
+    elseif keys.text == "I love you" then
+        GameRules:SendCustomMessage('<font color="white">greevil:Love Love Love.</font>',keys.playerid,1)
+    elseif keys.text == "Hi" then
+        GameRules:SendCustomMessage('<font color="white">greevil:My master, I will follow you forever.</font>',keys.playerid,1)
+    end
 end
 
 -- Evaluate the state of the game

@@ -65,14 +65,6 @@
 		{
 			"particle"	"particles/econ/courier/courier_gold_horn/courier_gold_horn_ambient_feather.vpcf"
 		}
-		"OnAttacked"
-		{
-			"ApplyModifier"
-			{
-				"Target"	"TARGET"
-				"ModifierName"	"modifier_evd:50"
-			}
-		}
 		"Modifiers"
 		{
 			"modifier_evd:50"
@@ -87,7 +79,7 @@
 				{
 					"MODIFIER_PROPERTY_EVASION_CONSTANT"	"50"
 				}
-				"IsHidden"	"0"
+				"IsHidden"	"1"
 			}
 		}
 	}
@@ -128,7 +120,7 @@
 				{
 					"MODIFIER_PROPERTY_EVASION_CONSTANT"	"90"
 				}
-				"IsHidden"	"0"
+				"IsHidden"	"1"
 			}
 		}
 	}
@@ -169,7 +161,7 @@
 				{
 					"MODIFIER_PROPERTY_EVASION_CONSTANT"	"80"
 				}
-				"IsHidden"	"0"
+				"IsHidden"	"1"
 			}
 		}
 	}
@@ -187,12 +179,20 @@
 		{
 			"particle"	"particles/econ/courier/courier_jadehoof_ambient/jadehoof_special_blossoms.vpcf"
 		}
+		"OnOwnerSpawned"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_crt:50_nice"
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_crt:50_nice"
 			{
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Passive"	"1"
+				"Passive"	"0"
 				"IsBuff"	"1"
 				"IsHidden"	"1"
 				"EffectAttachType"	"attach_attack"
@@ -203,7 +203,6 @@
 					"MODIFIER_PROPERTY_MISS_PERCENTAGE"	"10"
 					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"	"200"
 				}
-				"Duration"	"5"
 				"OnAttack"
 				{
 					"Random"
@@ -234,28 +233,40 @@
 		"MaxLevel"	"1"
 		"RequiredLevel"	"1"
 		"AbilityCastPoint"	"0"
+		"OnOwnerSpawned"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_cavalry_go"
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_cavalry_go"
 			{
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Passive"	"0"
-				"IsBuff"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"	"300"
-				}
+				"Passive"	"1"
+				"IsBuff"	"0"
+				"Properties"	{}
 				"States"	{}
 				"OnUnitMoved"
 				{
 					"ApplyModifier"
 					{
-						"Target"	"TARGET"
-						"ModifierName"	"modifier_cavalry_go"
+						"Target"	"CASTER"
+						"ModifierName"	"modifier_cavalry_go_2"
 						"Duration"	"2"
 					}
 				}
-				"Duration"	"2"
+				"IsHidden"	"1"
+			}
+			"modifier_cavalry_go_2"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"	"300"
+				}
+				"IsBuff"	"0"
 			}
 		}
 	}
@@ -274,25 +285,16 @@
 		{
 			"particle"	"particles/dev/library/base_follow_absorigin_instant.vpcf"
 		}
-		"OnOwnerSpawned"
-		{
-			"ApplyModifier"
-			{
-				"Target"	"CASTER"
-				"ModifierName"	"modifier_water_attack"
-			}
-		}
 		"Modifiers"
 		{
 			"modifier_water_attack"
 			{
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"StatusEffectName"	"particles/status_fx/status_effect_medusa_stone_gaze.vpcf"
 				"StatusEffectPriority"	"10"
 				"IsDebuff"	"0"
-				"Duration"	"3"
 				// 1000码范围百分之百减少攻击速度和移动速度
 				"OnAttack"
 				{
@@ -302,7 +304,8 @@
 						{
 							"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 							"Center"	"TARGET"
-							"Radius"	"1000"
+							"Radius"	"700"
+							"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 						}
 						"ModifierName"	"modifier_water_slow_down"
 					}
@@ -310,8 +313,7 @@
 			}
 			"modifier_water_slow_down"
 			{
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Duration"	"3"
+				"Duration"	"1"
 				"IsDebuff"	"1"
 				"IsPurgable"	"1"
 				"EffectName"	"particles/dev/library/base_follow_absorigin_instant.vpcf"
@@ -319,22 +321,8 @@
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MOVESPEED_BASE_OVERRIDE"	"100"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"1"
 				}
 				"EffectAttachType"	"attach_origin"
-				"OnAttack"
-				{
-					"ApplyModifier"
-					{
-						"Target"
-						{
-							"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							"Center"	"TARGET"
-							"Radius"	"1000"
-						}
-						"ModifierName"	"modifier_water_slow_down"
-					}
-				}
 			}
 		}
 	}
@@ -357,18 +345,335 @@
 				{
 					"MODIFIER_STATE_ROOTED"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
-				"Duration"	"10"
+				"Duration"	"0.1"
 				"IsHidden"	"0"
 				"IsDebuff"	"1"
 				"IsPurgable"	"1"
 				"Passive"	"0"
+			}
+			"modifier_lancer_slow_2"
+			{
 				"OnAttack"
 				{
 					"ApplyModifier"
 					{
 						"Target"	"TARGET"
 						"ModifierName"	"modifier_lancer_slow"
+						"Duration"	"0.1"
 					}
+				}
+				"Passive"	"1"
+				"IsHidden"	"1"
+			}
+		}
+	}
+
+	"slow_water"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"omniknight_degen_aura"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"	"1"
+		"RequiredLevel"	"1"
+		"OnUpgrade"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_slow_water"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_slow_water"
+			{
+				"Passive"	"1"
+				"IsDebuff"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BASE_OVERRIDE"	"100"
+					"MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT"	"3"
+				}
+			}
+		}
+	}
+
+	"TheEightDiagrams1"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"greevil_purification"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"OnUpgrade"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_TheEightDiagrams1"
+				"Duration"	"120"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_TheEightDiagrams1"
+			{
+				"Passive"	"1"
+				"IsBuff"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"1000"
+				}
+			}
+		}
+	}
+
+	// 休门 坎
+	"TheEightDiagrams2"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"bane_nightmare"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"OnUpgrade"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_TheEightDiagrams2"
+				"Duration"	"120"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_TheEightDiagrams2"
+			{
+				"Passive"	"1"
+				"IsBuff"	"0"
+				"States"
+				{
+					"MODIFIER_STATE_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"IsDebuff"	"1"
+			}
+		}
+	}
+
+	"TheEightDiagrams3"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"furion_sprout"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"OnUpgrade"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_TheEightDiagrams3"
+				"Duration"	"120"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_TheEightDiagrams3"
+			{
+				"Passive"	"1"
+				"IsBuff"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"1"
+				}
+			}
+		}
+	}
+
+	"TheEightDiagrams4"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"bloodseeker_rupture"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"OnUpgrade"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_TheEightDiagrams4"
+				"Duration"	"120"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_TheEightDiagrams4"
+			{
+				"Passive"	"1"
+				"IsBuff"	"0"
+				"IsDebuff"	"1"
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Target"	"CASTER"
+						"Type"	"DAMAGE_TYPE_PURE"
+						"Damage"	"0.2"
+					}
+				}
+				"ThinkInterval"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-100"
+				}
+			}
+		}
+	}
+
+	"TheEightDiagrams5"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"lion_voodoo"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"OnUpgrade"
+		{
+			"Random"
+			{
+				"OnSuccess"
+				{
+					"ApplyModifier"
+					{
+						"Target"	"CASTER"
+						"ModifierName"	"modifier_TheEightDiagrams5"
+						"Duration"	"120"
+					}
+				}
+				"Chance"	"20"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_TheEightDiagrams5"
+			{
+				"Passive"	"1"
+				"IsDebuff"	"1"
+				"States"
+				{
+					"MODIFIER_STATE_HEXED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"IsPurgable"	"1"
+			}
+		}
+	}
+
+	"TheEightDiagrams6"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"enraged_wildkin_tornado"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"OnUpgrade"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_TheEightDiagrams6_2"
+				"Duration"	"120"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_TheEightDiagrams6"
+			{
+				"IsDebuff"	"1"
+				"Passive"	"0"
+				"IsPurgable"	"1"
+				"Properties"	{}
+				"States"
+				{
+					"MODIFIER_STATE_NIGHTMARED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
+
+	"TheEightDiagrams7"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"skeleton_king_reincarnation"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"OnUpgrade"
+		{
+			"Random"
+			{
+				"OnSuccess"
+				{
+					"Damage"
+					{
+						"Target"	"CASTER"
+						"Type"	"DAMAGE_TYPE_PURE"
+						"Damage"	"100"
+						"MaxHealthPercentBasedDamage"	"100"
+					}
+				}
+				"Chance"	"50"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_TheEightDiagrams7"
+			{
+				"Passive"	"1"
+				"IsDebuff"	"1"
+				"IsPurgable"	"1"
+			}
+		}
+	}
+
+	"TheEightDiagrams8"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"lone_druid_spirit_bear_return"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"OnUpgrade"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_TheEightDiagrams8"
+				"Duration"	"120"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_TheEightDiagrams8"
+			{
+				"Passive"	"1"
+				"IsDebuff"	"1"
+				"IsPurgable"	"1"
+				"States"
+				{
+					"MODIFIER_STATE_COMMAND_RESTRICTED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
+
+	"momian"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"OnOwnerSpawned"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_momian"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_momian"
+			{
+				"Passive"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+				"IsBuff"	"1"
+				"Properties"	{}
+				"States"
+				{
+					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
 		}

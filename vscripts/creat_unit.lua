@@ -8,13 +8,36 @@ function Create_unit_start()
             if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
                 City_random_production_unit("NeeBee")
                 City_random_production_unit("Ehome")
-                return 60
+                City_random_production_unit("hellraisers")
+                City_random_production_unit("LGD")
+                City_random_production_unit("NP")
+                City_random_production_unit("infamous")
+                City_random_production_unit("MVP")
+                City_random_production_unit("Secret")
+                City_random_production_unit("IG")
+                City_random_production_unit("IG_V")
+                City_random_production_unit("VGR")
+                City_random_production_unit("OG")
+                City_random_production_unit("Escape")
+                City_random_production_unit("C9")
+                City_random_production_unit("COL")
+                City_random_production_unit("EG")
+                City_random_production_unit("NAVI")
+                City_random_production_unit("DC")
+                City_random_production_unit("VP")
+                City_random_production_unit("TNC")
+                City_random_production_unit("LFY")
+                City_random_production_unit("Execration")
+                City_random_production_unit("WINGS")
+                City_random_production_unit("Liquid")
+                City_random_production_unit("A_team")
+                return 180
             else
                 return nil
             end
         end
     end ,
-    9)
+    60)
 end
 
 function City_random_production_unit(buiding_name)
@@ -30,10 +53,6 @@ function City_random_production_unit(buiding_name)
             local unit_name = key
             if unit_number ~= 0 then
                 for i = 1, unit_number, 1 do
-                    print("baijiege")
-                    print(key)
-                    print(position)
-                    print(buiding_team_id)
                     local unit = CreateUnitByName(unit_name,position,false,nil,nil,buiding_team_id)
                     unit:AddNewModifier(nil, nil, "modifier_phased", {duration=0.1})
                     if unit_number_table[buiding_name]['buiding_control'] ~= nil then 
